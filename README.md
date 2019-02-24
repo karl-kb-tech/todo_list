@@ -1,6 +1,7 @@
 # todo_list:
 
 /api/v1/todos/
+
 [{
 	task: "..."  = string
 	priority 5  =integer
