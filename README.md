@@ -33,4 +33,4 @@ root ---client---actions/index.js
 					DB/todo.js
 			/server.js, index.js
 
-![todo Plan](/images/todoPlan.jpg)
+![todo Plan](/public/images/todoPlan.jpg)
