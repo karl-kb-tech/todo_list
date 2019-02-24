@@ -32,3 +32,5 @@ root ---client---actions/index.js
 	---server----reducers/todo.js
 					DB/todo.js
 			/server.js, index.js
+
+![todo Plan](/images/todoPlan.jpg)
