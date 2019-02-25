@@ -1,5 +1,6 @@
 module.exports = {
   getTodos,
+  getTodoById,
   createTodo,
   getTodobyPriority,
   getTodobyCategory,
@@ -12,6 +13,14 @@ function getTodos(testDb) {
   const db = testDb || connection
 
   return db('todos')
+}
+
+function getTodoById(id, testDb) {
+  const db = testDb || connection
+
+  return db('todos')
+    .where('id', id)
+
 }
 
 function createTodo(todo, testDb) {
