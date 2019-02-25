@@ -1,4 +1,5 @@
 module.exports = {
+  newTodo,
   getTodos,
   getTodoById,
   createTodo,
@@ -8,6 +9,12 @@ module.exports = {
 }
 
 const connection = require('./connection')
+
+function newTodo(todo, testDb) {
+  const db = testDb || connection
+  return db('todos')
+    .insert(todo)
+}
 
 function getTodos(testDb) {
   const db = testDb || connection

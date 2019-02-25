@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { getTodos, getTodoById } = require('../db/todos')
+const { newTodo, getTodos, getTodoById } = require('../db/todos')
 
 //GET /api/v1/todos
 router.get('/', (req, res) => {
@@ -16,7 +16,17 @@ router.get('/', (req, res) => {
 
 //POST /api/v1/todos
 router.post('/', (req, res) => {
-  res.json('post is working')
+
+  const todo = req.body
+
+  newTodo(todo)
+    .then(todo => {
+      res.json(todo)
+    })
+    .catch(err => {
+      console.log(err)
+      res.setStatus(500).json({ error: 'something went wrong' })
+    })
 })
 
 //GET /api/v1/todos/:id
