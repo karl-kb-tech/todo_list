@@ -1,35 +1,33 @@
 const express = require('express')
 const router = express.Router()
+const { getTodobyPriority } = require('../db/todos')
 
-//GET /api/v1/priority
+
+//GET /api/v1/todos/todos/priority
 router.get('/', (req, res) => {
-  res.json([
-    {
-      task: 'get coke',
-      priority: 1,
-      category: "food & drink",
-      is_complete: false,
-      due_at: 1551135600
-    }
-  ])
+  getTodos()
+    .then(todos => {
+      res.json(todos)
+    })
+    .catch(err => {
+      console.log(err)
+      res.setStatus(500).json({ error: 'something went wrong' })
+    })
 })
 
-//POST /api/v1/priority
-router.post('/', (req, res) => {
-  res.json('post is working')
-})
-
-//GET /api/v1/priority/:priority
+//GET /api/v1/todos/priority/:priority
 router.get('/:priority', (req, res) => {
-  res.json([
-    {
-      task: 'get coke',
-      priority: 1,
-      category: "food & drink",
-      is_complete: false,
-      due_at: 1551135600
-    }
-  ])
+
+  const priority = req.params.priority
+
+  getTodobyPriority(priority)
+    .then(todo => {
+      res.json(todo)
+    })
+    .catch(err => {
+      console.log(err)
+      res.setStatus(500).json({ error: 'something went wrong' })
+    })
 })
 
 module.exports = router
