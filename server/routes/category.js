@@ -12,7 +12,7 @@ router.get('/:category', (req, res) => {
     })
     .catch(err => {
       console.log(err)
-      res.setStatus(500).json({ error: 'something went wrong' })
+      res.status(500).json({ error: 'something went wrong' })
     })
 })
 

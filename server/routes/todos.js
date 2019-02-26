@@ -10,22 +10,21 @@ router.get('/', (req, res) => {
     })
     .catch(err => {
       console.log(err)
-      res.setStatus(500).json({ error: 'something went wrong' })
+      res.status(500).json({ error: 'something went wrong' })
     })
 })
 
 //POST /api/v1/todos
 router.post('/', (req, res) => {
-
   const todo = req.body
 
   newTodo(todo)
     .then(todo => {
-      res.json(todo)
+      res.redirect('/')
     })
     .catch(err => {
       console.log(err)
-      res.setStatus(500).json({ error: 'something went wrong' })
+      res.status(500).json({ error: 'something went wrong' })
     })
 })
 
@@ -38,7 +37,7 @@ router.get('/:id', (req, res) => {
     })
     .catch(err => {
       console.log(err)
-      res.setStatus(500).json({ error: 'something went wrong' })
+      res.status(500).json({ error: 'something went wrong' })
     })
 })
 
