@@ -1,4 +1,4 @@
-import { getTodos as apiGetTodos, sendTodo as apiSendTodo } from "../api/todos";
+import { getTodos as apiGetTodos, sendTodo as apiSendTodo, priorityTodo as apiPriorityTodo } from "../api/todos";
 
 export function getTodos() {
   return dispatch => {
@@ -18,6 +18,15 @@ export function saveTodo(todos) {
 export function sendTodo(todo) {
   return dispatch => {
     return apiSendTodo(todo)
+      .then(result => {
+        dispatch(getTodos())
+      })
+  }
+}
+
+export function priorityTodo(priority) {
+  return dispatch => {
+    return apiPriorityTodo(priority)
       .then(result => {
         dispatch(getTodos())
       })

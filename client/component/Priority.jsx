@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { priorityTodo } from '../actions'
+
 class Priority extends React.Component {
   constructor(props) {
     super(props)
@@ -12,7 +14,7 @@ class Priority extends React.Component {
     return (
       <div>
         <ul>
-          {this.props.todos.map(todos => {
+          {this.props.todos.priority.map(todos => {
             return (
               <li>{todos.priority}{todos.task}</li>
             )
